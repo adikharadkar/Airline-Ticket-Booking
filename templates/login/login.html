@@ -1,0 +1,182 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Linking main.css file -->
+        <!-- <link rel="stylesheet" href="../../static/PassengerRegistration/PassengerRegistration.css"> -->
+
+        <!-- Script for user input validtion -->
+        <script>
+            // Function to validate the user input
+            function validate() {
+
+                // Capturing user input into variables
+                var name = document.form.name.value;
+
+                var password = document.form.password.value;
+
+
+                if (name == "") {
+
+                    document.getElementById("errorName").innerHTML = "Name is required!";
+                    return false
+
+                } else if (name.length > 50) {
+
+                    document.getElementById("errorName").innerHTML = "Name should contain less than 50 characters!";
+                    return false
+
+                }
+
+
+
+                if (password == "") {
+
+                    document.getElementById("errorPassword").innerHTML = "Password is required!";
+                    return false
+
+                } else if (password.length < 8) {
+
+                    document.getElementById("errorPassword").innerHTML = "Password must contain at least 8 characters!";
+                    return false
+
+                } else if (password.length > 30) {
+
+                    document.getElementById("errorPassword").innerHTML = "Password must contain less than 30 characters!";
+                    return false
+
+                }
+                return true
+
+            }
+        </script>
+
+        <!-- CSS Styles -->
+        <style>
+            .error {
+                visibility: visible;
+                font-weight: bold;
+                color: red;
+            }
+            
+            .form {
+                text-align: center;
+            }
+            
+            label {
+                margin-right: 75px;
+                text-align: left;
+                position: relative;
+                font-weight: bold;
+            }
+            
+            body {
+                text-align: center;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+            
+            .pid {
+                cursor: not-allowed;
+            }
+            
+            .abc {
+                font-weight: bold;
+                font-size: 50px;
+                color: red;
+            }
+            
+            .airline {
+                font-weight: bold;
+                font-size: 25px;
+                color: #00bfff;
+            }
+            
+            .content {
+                margin: auto;
+                text-align: center;
+            }
+            
+            .airlineName {
+                position: relative;
+                margin-right: 400px;
+            }
+            
+            .headerName {
+                color: steelblue;
+            }
+            
+            .table {
+                margin-left: 450px;
+            }
+            
+            input {
+                width: 200px;
+                height: 35px;
+                border: 2px solid black;
+            }
+            
+            textarea {
+                width: 200px;
+                border: 2px solid black;
+                height: 60px;
+            }
+            
+            td {
+                padding: 5px;
+            }
+            
+            .submitBtn {
+                position: relative;
+                width: 120px;
+                height: 40px;
+                background-color: #1e90ff;
+                border: none;
+                color: white;
+                font-weight: bold;
+                font-size: 20px;
+                border-radius: 10px;
+                cursor: pointer;
+            }
+        </style>
+
+        <!-- IF block will get executed if a page has a custom title -->
+        {% if title %}
+            <title>ABC Airline - {{ title }}</title>
+
+        <!-- ELSE block will get executed if a page does not have a custom title -->
+        {% else %}
+            <title>ABC Airline</title>
+        {% endif %}
+
+    </head>
+    <body>
+        <div class="content">
+            <div class="ABCAirline">
+                <p class="airlineName"><small class="abc">ABC</small><sub class="airline">Airline</sub></p>
+            </div>
+            <br>
+            <br>
+            <br>
+            <form class="form" id="form" name="form" method="post" onsubmit="return validate() ">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td><label>Name</label></td>
+                            <td><input type="text" placeholder="Your Name" id="name" name="name"></td>
+                            <td><small id="errorName" class="error"></small></td>
+                        </tr>
+                        <tr>
+                            <td><label>Password</label></td>
+                            <td><input type="password" placeholder="Password" id="password" name="password"></td>
+                            <td><small id="errorPassword" class="error"></small></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+                <button class="submitBtn">Login</button>
+            </form>
+        </div>
+    </body>
+</html>
