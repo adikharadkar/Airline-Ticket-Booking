@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .form {
+            text-align: center;
+        }
+        body {
+    
+            text-align: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .abc {
+            font-weight: bold;
+            font-size: 50px;
+            color: red;
+        }
+        .airline {
+            font-weight: bold;
+            font-size: 25px;
+            color: #00bfff;
+        }
+        .content {
+            margin: auto;
+            text-align: center;
+        }
+        .airlineName {
+            position: fixed;
+            top: -3%;
+        }
+        .headerName {
+            color: steelblue;
+            font-size: 35px;
+            position: relative;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: auto;
+        }
+        th {
+            padding: 8px;
+            border-collapse: collapse;
+            border:1px solid black;
+            background-color: steelblue; 
+        }
+        td {
+            border: 1px solid black;
+            text-align: left;
+            padding: 11px;
+        }
+        .previous {
+            float: left;
+            margin-left: 20px;
+            color: #4b0082;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        .next {
+            float: right;
+            margin-right: 20px;
+            color: #4b0082;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        .home {
+            text-align: center;
+            color: #1f1f1f;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 22px;
+        }
+        .homeLink {
+            margin-right: 10px;
+            margin-top: 20px;
+            float: right;
+        }
+        </style>
+
+        <!-- IF block will get executed if a page has a custom title -->
+        {% if title %}
+            <title>ABC Airline - {{ title }}</title>
+
+        <!-- ELSE block will get executed if a page does not have a custom title -->
+        {% else %}
+            <title>ABC Airline</title>
+        {% endif %}
+
+    </head>
+    <body>
+        <div class="content">
+            <div class="ABCAirline">
+                <p class="airlineName"><small class="abc">ABC</small><sub class="airline">Airline</sub></p>
+            </div>
+            <div class="homeLink">
+                <a class="home" href="/passenger-home-page">Back To Home</a>
+            </div>
+            <br>
+            <br>
+            <br>
+            <div class="header">
+                <h1 class="headerName"> Booking List</h1>
+            </div>
+            <br>
+            <br>
+            <br>
+            <form class="form" id="form" name="form" method="post">
+                <table class="table">
+                    <tbody>
+                        <table>
+                            <tr>
+                            <th>PNR NO</th>
+                            <th>Travel Date</th>
+                            <th>Source</th>
+                            <th>Destination</th>
+                            <th>Seat Preference</th>
+                            <th>Meal Preference</th>
+                            </tr>
+                            {% for data in booking_history %}
+                            <tr>
+                            <td>{{ data[1] }}</td>
+                            <td>{{ data[2] }}</td>
+                            <td>{{ data[3] }}</td>
+                            <td>{{ data[4] }}</td>
+                            <td>{{ data[6] }}</td>
+                            <td>{{ data[7] }}</td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </tbody>
+                </table>
+                <br>
+                {% if prev >= 1 %}
+                    <a class="previous" href="/view-tickets/table/{{ prev }}" >&lt;&lt; Previous</a>
+                {% else %}
+                    <a class="next" href="/view-tickets/table/{{ next }}" >Next &gt;&gt;</a>
+                {% endif %}
+            </form>
+        </div>
+    </body>
+</html>
