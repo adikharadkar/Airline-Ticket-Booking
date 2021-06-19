@@ -1,0 +1,119 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- IF block will get executed if a page has a custom title -->
+        {% if title %}
+            <title>Ticket Booking - {{ title }}</title>
+
+        <!-- ELSE block will get executed if a page does not have a custom title -->
+        {% else %}
+            <title>Ticket Booking</title>
+        {% endif %}
+
+        <style>
+
+            body {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+
+            .abc {
+                font-weight: bold;
+                font-size: 50px;
+                color: red;
+            }
+
+            .airline {
+                font-weight: bold;
+                font-size: 25px;
+                color: #00bfff;
+            }
+
+            .content {
+                margin: auto;
+                text-align: center;
+            }
+
+            .airlineName {
+                position: relative;
+                margin-right: 400px;
+            }
+
+            .headerName {
+                color: steelblue;
+            }
+
+            td {
+                padding: 10px;
+            }
+
+            .id,.name,.email {
+                font-weight: bold;
+            }
+
+            .registered {
+                color: green;
+                font-size: 20px;
+            }
+
+            .passengerDetails, table {
+                margin: auto;
+            }
+
+            a {
+                font-size: 20px;
+                color: steelblue;
+            }
+
+            .backToLogin {
+                text-align: center;
+            }
+
+        </style>
+
+        <!-- IF block will get executed if a page has a custom title -->
+        {% if title %}
+        <title>ABC Airline - {{ title }}</title>
+
+        <!-- ELSE block will get executed if a page does not have a custom title -->
+        {% else %}
+            <title>ABC Airline</title>
+        {% endif %}
+
+    </head>
+    <body>
+        <div class="content">
+            <div class="ABCAirline">
+                <p class="airlineName"><small class="abc">ABC</small><sub class="airline">Airline</sub></p>
+            </div>
+            <div class="header">
+                <h2 class="headerName">Passenger Registration</h2>
+            </div>
+            <div class="successMessage">
+                <h4 class="registered">Passenger Registration Successful!</h4>
+            </div>
+            <div class="passengerDetails">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Passenger Id</td>
+                            <td class="id">: {{ p_id }}</td>
+                        </tr>
+                        <tr>
+                            <td>Name</td>
+                            <td class="name">: {{ name }}</td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td class="email">: {{ email }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="backToLogin">
+                <a href="/login">Back To Login</a>
+            </div>
+        </div>
+    </body>
+</html>
