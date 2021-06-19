@@ -1,0 +1,115 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- IF block will get executed if a page has a custom title -->
+    {% if title %}
+        <title>ABC Airline - {{ title }}</title>
+
+    <!-- ELSE block will get executed if a page does not have a custom title -->
+    {% else %}
+        <title>ABC Airline</title>
+    {% endif %}
+
+    <style>
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .abc {
+            font-weight: bold;
+            font-size: 50px;
+            color: red;
+        }
+
+        .airline {
+            font-weight: bold;
+            font-size: 25px;
+            color: #00bfff;
+        }
+
+        .content {
+            margin: auto;
+            text-align: center;
+        }
+
+        .airlineName {
+            position: relative;
+            margin-right: 400px;
+        }
+
+        .headerName {
+            color: steelblue;
+        }
+
+        td {
+            padding: 10px;
+        }
+
+        .pnr,.date,.source,.destination {
+            font-weight: bold;
+        }
+
+        .registered {
+            color: green;
+            font-size: 20px;
+        }
+
+        .passengerDetails, table {
+            margin: auto;
+        }
+
+        a {
+            font-size: 20px;
+            color: steelblue;
+        }
+
+        .backToLogin {
+            text-align: center;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div class="content">
+        <div class="ABCAirline">
+            <p class="airlineName"><small class="abc">ABC</small><sub class="airline">Airline</sub></p>
+        </div>
+        <div class="header">
+            <h2 class="headerName">Ticket Booking</h2>
+        </div>
+        <div class="successMessage">
+            <h4 class="registered">Ticket Booked Successfully!</h4>
+        </div>
+        <div class="passengerDetails">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>PNR No.</td>
+                        <td class="pnr">: {{ pnr }}</td>
+                    </tr>
+                    <tr>
+                        <td>Travel Date</td>
+                        <td class="date">: {{ ticket_date }}</td>
+                    </tr>
+                    <tr>
+                        <td>Source Airport</td>
+                        <td class="source">: {{ source_airport }}</td>
+                    </tr>
+                    <tr>
+                        <td>Destination Airport</td>
+                        <td class="destination">: {{ destination_airport }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="backToLogin">
+            <a href="/passenger-home-page">Back To Home</a>
+        </div>
+
+    </div>
+</body>
+</html>

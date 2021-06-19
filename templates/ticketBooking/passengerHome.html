@@ -1,0 +1,110 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            text-align: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .abc {
+            font-weight: bold;
+            font-size: 50px;
+            color: red;
+        }
+
+        h1 {
+            color: steelblue;
+        }
+        
+        .airline {
+            font-weight: bold;
+            font-size: 25px;
+            color: #00bfff;
+        }
+
+        .book, .view {
+            color: #00bfff;
+        }
+         .content {
+            margin: auto;
+            text-align: center;
+        }
+         .airlineName {
+            position: fixed;
+            top: -3%;
+        }
+         .headerName {
+            color: steelblue;
+        }
+         .navbar {
+            height: 8%;
+            overflow: hidden;
+            margin: auto;
+            color:blue;
+            background-color: white;
+            line-height: 250%;
+            border: 2px solid black;
+            margin-top: 50px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            width:100% ;
+            text-align: center;
+         }
+
+        .navbar a {  
+            float: auto;
+            margin-right: 10px;
+            font-size: 23px;
+            color: #1E90FF;
+            position: relative;
+            /* padding: 12px 10px; */
+            text-decoration: underline;
+            }
+
+        .welcome-logout {
+            float: right;
+        }
+        
+        .logout {
+            color: darkslateblue;
+            font-weight: bold;
+            font-size: 15px;
+        }
+        .welcome {
+            color: black;
+            font-weight: bold;
+            font-size: 15px;
+        }
+    </style>
+
+    <!-- IF block will get executed if a page has a custom title -->
+    {% if title %}
+    <title>ABC Airline - {{ title }}</title>
+
+    <!-- ELSE block will get executed if a page does not have a custom title -->
+    {% else %}
+        <title>ABC Airline</title>
+    {% endif %}
+
+</head>
+<body>
+    <div class="content">
+        <div class="ABCAirline">
+            <p class="airlineName"><small class="abc">ABC</small><sub class="airline">Airline</sub></p>
+        </div>
+        <div class="welcome-logout">
+            <p class="welcome">Welcome {{ p_name }} | <a class="logout" href="/logout">Logout</a></p>
+        </div>
+        <br>
+        <div class="navbar">
+            <a class="book" href="/book-ticket">Book Ticket</a>  <a>||</a>
+            <a class="view" href="/view-tickets">View Ticket</a>
+         </div>   
+         <h1>Passenger Home Page</h1>
+    </div>
+</body>
+</html>

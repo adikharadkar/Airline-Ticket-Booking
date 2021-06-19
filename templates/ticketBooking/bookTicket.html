@@ -1,0 +1,242 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Linking main.css file -->
+    <!-- <link rel="stylesheet" href="../../static/PassengerRegistration/PassengerRegistration.css"> -->
+
+    <!-- Script for user input validtion -->
+    <script>
+
+        // Function to validate the user input
+        function validate() {
+
+        // Capturing user input into variables
+        var date = document.form.date.value;
+        var source = document.form.source.value;
+        var destination = document.form.destination.value;
+        var status = document.form.status.value;
+        var seat = document.form.seat.value;
+        var meal = document.form.meal.value;
+
+        if (date == "") {
+
+            document.getElementById("errorDate").innerHTML = "Date is required!";
+            return false
+
+        }
+
+        if (source == "") {
+
+            document.getElementById("errorSource").innerHTML = "Source Airport is required!";
+            return false
+
+        }
+
+        if (destination == "") {
+
+            document.getElementById("errorDestination").innerHTML = "Destination Airport is required!";
+            return false
+
+        }
+
+        if (status == "") {
+
+            document.getElementById("errorStatus").innerHTML = "Ticket Status is required!";
+            return false
+
+        }
+
+        if (seat == "") {
+
+            document.getElementById("errorSeat").innerHTML = "Seat Preference is required!";
+            return false
+
+        }
+
+        if (meal == "") {
+
+            document.getElementById("errorMeal").innerHTML = "Meal Preference is required!";
+            return false
+
+        }
+
+        return true
+
+        }
+
+    </script>
+
+    <!-- CSS Styles -->
+    <style>
+
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+
+        .form {
+            text-align: center;
+        }
+
+        label {
+            margin-right: 75px;
+            text-align: left;
+            position: relative;
+            font-weight: bold;
+        }
+
+        body {
+            text-align: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .pnr, .p_id {
+            cursor: not-allowed;
+        }
+
+        .abc {
+            font-weight: bold;
+            font-size: 50px;
+            color: red;
+        }
+
+        .airline {
+            font-weight: bold;
+            font-size: 25px;
+            color: #00bfff;
+        }
+
+        .content {
+            margin: auto;
+            text-align: center;
+        }
+
+        .airlineName {
+            position: relative;
+            margin-right: 400px;
+        }
+
+        .headerName {
+            color: steelblue;
+        }
+
+        .table {
+            margin-left: 350px;
+        }
+
+        input, select {
+            width: 200px;
+            height: 35px;
+            border: 2px solid black;
+        }
+
+        textarea {
+            width: 200px;
+            border: 2px solid black;
+            height: 60px;
+        }
+
+        td {
+            padding: 5px;
+        }
+
+        .submitBtn {
+            width: 160px;
+            height: 40px;
+            background-color: #1e90ff;
+            border: none;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+    </style>
+
+    <!-- IF block will get executed if a page has a custom title -->
+    {% if title %}
+    <title>ABC Airline - {{ title }}</title>
+
+    <!-- ELSE block will get executed if a page does not have a custom title -->
+    {% else %}
+        <title>ABC Airline</title>
+    {% endif %}
+
+</head>
+<body>
+    <div class="content">
+        <div class="ABCAirline">
+            <p class="airlineName"><small class="abc">ABC</small><sub class="airline">Airline</sub></p>
+        </div>
+        <div class="header">
+            <h2 class="headerName">Ticket Booking</h2>
+        </div>
+        <form class="form" id="form" name="form" method="post" onsubmit="return validate()">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td><label>Passenger ID</label></td>
+                        <td><input type="text" class="p_id" placeholder="Passenger ID" id="p_id" name="p_id" value="{{ p_id }}" readonly></td>
+                        <td><small id="errorPid" class="error"></small></td>
+                    </tr>
+                    <tr>
+                        <td><label>PNR Number</label></td>
+                        <td><input type="text" class="pnr" placeholder="PNR Number" id="pnr" name="pnr" value="{{ pnr }}" readonly></td>
+                        <td><small id="errorPnr" class="error"></small></td>
+                    </tr>
+                    <tr>
+                        <td><label>Date</label></td>
+                        <td><input type="date" placeholder="Date" id="date" name="date"></td>
+                        <td><small id="errorDate" class="error"></small></td>
+                    </tr>
+                    <tr>
+                        <td><label>Source Airport</label></td>
+                        <td><input type="text" placeholder="Source Airport" id="source" name="source"></td>
+                        <td><small id="errorSource" class="error"></small></td>
+                    </tr>
+                    <tr>
+                        <td><label>Destination Airport</label></td>
+                        <td><input type="text" placeholder="Destination Airport" id="destination" name="destination"></td>
+                        <td><small id="errorDestination" class="error"></small></td>
+                    </tr>
+                    <tr>
+                        <td><label>Ticket Status</label></td>
+                        <td><select name="status" id="status">
+							<option value="">Select Status</option>
+							<option value="New">New</option>
+							<option value="Confirm">Confirm</option>
+							<option value="Hold">Hold</option>
+						</select></td>
+                        <td><small id="errorStatus" class="error"></small></td>
+                    </tr>
+                    <tr>
+                        <td><label>Seat Preference</label></td>
+                        <td><select name="seat" id="seat">
+							<option value="">Select Preference</option>
+							<option value="Window">Window</option>
+							<option value="Middle">Middle</option>
+							<option value="Aside">Aside</option>
+						</select></td>
+                        <td><small id="errorSeat" class="error"></small></td>
+                    </tr>
+                    <tr>
+                        <td><label>Meal Preference</label></td>
+                        <td><select name="meal" id="meal">
+							<option value="">Select Meal</option>
+							<option value="Veg">Veg</option>
+							<option value="Non-Veg">Non-Veg</option>
+						</select></td>
+                        <td><small id="errorMeal" class="error"></small></td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <button class="submitBtn">Book Ticket</button>
+        </form>
+    </div>
+</body>
+</html>
