@@ -200,19 +200,6 @@ def bookTicket():
             "Meal Preference":meal_preference
         }
 
-        # Create ticket_booking table
-        # CREATE TABLE ticket_booking(
-        #     ticket_id INT AUTO_INCREMENT PRIMARY KEY,
-        #     ticket_date DATE,
-        #     source_airport VARCHAR(255),
-        #     destination_airport VARCHAR(255),
-        #     ticket_status VARCHAR(255),
-        #     seat_preference VARCHAR(255),
-        #     meal_preference VARCHAR(255),
-        #     passenger_id INT,
-        #     FOREIGN KEY(passenger_id) REFERENCES passenger_registration(p_id)
-        # );
-
         # Creating a cursor
         cursor = mysql.connection.cursor()
 
